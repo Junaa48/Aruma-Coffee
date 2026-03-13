@@ -1,0 +1,131 @@
+body {
+    background-color: #EAE8E3;
+    color: #1C1B1A;
+    overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+    body {
+        cursor: none; /* Custom cursor hanya untuk desktop */
+    }
+}
+
+/* Smooth Selection */
+::selection {
+    background: #D4A574;
+    color: #fff;
+}
+
+/* Custom Cursor */
+.cursor-dot,
+.cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #1C1B1A;
+}
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(28, 27, 26, 0.3);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Image Reveal Animation Classes */
+.img-reveal-container {
+    overflow: hidden;
+    position: relative;
+}
+.img-reveal {
+    transform: scale(1.3);
+    transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.img-reveal-container:hover .img-reveal {
+    transform: scale(1);
+}
+
+/* Menu Item Hover Effect */
+.menu-item {
+    border-bottom: 1px solid rgba(28, 27, 26, 0.1);
+    transition: all 0.5s ease;
+}
+.menu-item:hover {
+    padding-left: 20px;
+    border-color: #1C1B1A;
+}
+
+/* Floating Image for Menu */
+.menu-floating-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #1C1B1A;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EAE8E3;
+}
+
+.hero-image-overlay {
+    background: linear-gradient(to top, #EAE8E3 0%, transparent 30%);
+}
+
+/* Gallery Horizontal Scroll */
+.gallery-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Custom Scrollbar untuk Gallery */
+.gallery-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track {
+    background: rgba(212, 165, 116, 0.1);
+    border-radius: 10px;
+    margin: 0 24px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+    background: #D4A574;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb:hover {
+    background: #C89563;
+}
+
+/* Gallery Item Animation */
+.gallery-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
