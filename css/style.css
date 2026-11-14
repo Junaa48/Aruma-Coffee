@@ -4,9 +4,20 @@ body {
     overflow-x: hidden;
 }
 
-@media (min-width: 768px) {
-    body {
-        cursor: none; /* Custom cursor hanya untuk desktop */
+@media (hover: hover) and (pointer: fine) {
+    body.has-custom-cursor,
+    body.has-custom-cursor a,
+    body.has-custom-cursor button,
+    body.has-custom-cursor .menu-item,
+    body.has-custom-cursor .gallery-scroll,
+    body.has-custom-cursor .gallery-scroll.is-dragging {
+        cursor: none; /* Custom cursor hanya untuk perangkat pointer presisi */
+    }
+
+    body.has-custom-cursor input,
+    body.has-custom-cursor textarea,
+    body.has-custom-cursor select {
+        cursor: text;
     }
 }
 
@@ -22,21 +33,23 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    transform: translate(-50%, -50%);
     border-radius: 50%;
     z-index: 9999;
     pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: difference;
+    will-change: transform, opacity;
 }
 .cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #1C1B1A;
+    width: 8px;
+    height: 8px;
+    background-color: #FAF8F5;
 }
 .cursor-outline {
     width: 40px;
     height: 40px;
-    border: 1px solid rgba(28, 27, 26, 0.3);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    border: 1.5px solid rgba(250, 248, 245, 0.75);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 /* Image Reveal Animation Classes */
@@ -52,10 +65,20 @@ body {
     transform: scale(1);
 }
 
+/* Parallax Image Overscan (mencegah celah kosong saat scrub) */
+.parallax-img {
+    position: absolute;
+    left: 0;
+    top: -13%;
+    width: 100%;
+    height: 126%;
+    object-fit: cover;
+}
+
 /* Menu Item Hover Effect */
 .menu-item {
     border-bottom: 1px solid rgba(28, 27, 26, 0.1);
-    transition: all 0.5s ease;
+    transition: padding-left 0.4s ease, border-color 0.4s ease;
 }
 .menu-item:hover {
     padding-left: 20px;
@@ -67,14 +90,15 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
     pointer-events: none;
     z-index: 999;
     opacity: 0;
     border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    will-change: transform, opacity;
 }
 
 /* Loader */
@@ -90,53 +114,87 @@ body {
 }
 
 .hero-image-overlay {
-    background: linear-gradient(to top, #EAE8E3 0%, transparent 30%);
+    background: linear-gradient(to top, #EAE8E3 0%, rgba(234, 232, 227, 0.55) 14%, transparent 34%);
 }
 
 /* Gallery Horizontal Scroll */
 .gallery-scroll {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    cursor: grab;
+    scrollbar-width: none; /* Sembunyikan scrollbar default agar lebih clean; pakai progress bar & drag */
 }
 
-/* Custom Scrollbar untuk Gallery */
 .gallery-scroll::-webkit-scrollbar {
-    height: 8px;
+    display: none;
 }
 
-.gallery-scroll::-webkit-scrollbar-track {
-    background: rgba(212, 165, 116, 0.1);
-    border-radius: 10px;
-    margin: 0 24px;
+@media (pointer: coarse) {
+    .gallery-scroll {
+        scroll-snap-type: x proximity;
+    }
+
+    .gallery-item {
+        scroll-snap-align: center;
+    }
 }
 
-.gallery-scroll::-webkit-scrollbar-thumb {
+.gallery-scroll.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+}
+
+.gallery-scroll img {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.gallery-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 165, 116, 0.35);
+    background: transparent;
+    color: #EAE8E3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, transform 0.25s ease;
+}
+
+.gallery-nav-btn:hover:not(:disabled) {
     background: #D4A574;
-    border-radius: 10px;
-    transition: background 0.3s ease;
+    border-color: #D4A574;
+    color: #1C1B1A;
+    transform: translateY(-2px);
 }
 
-.gallery-scroll::-webkit-scrollbar-thumb:hover {
-    background: #C89563;
+.gallery-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
-/* Gallery Item Animation */
+/* Gallery Item Animation (jangan transisikan transform agar tidak bentrok dengan GSAP) */
 .gallery-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
-    transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ========================================
-   NEW STYLES — UI Enhancements
+   UI Enhancements
    ======================================== */
 
 /* Navbar Scroll Effect */
 #navbar {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-scrolled {
@@ -146,6 +204,13 @@ body {
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+body.menu-open #navbar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
 }
 
 /* Hamburger Menu */
@@ -167,7 +232,7 @@ body {
     width: 100%;
     height: 2px;
     background-color: #fff;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
     transform-origin: center;
 }
 
@@ -192,7 +257,7 @@ body {
     z-index: 55;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-menu.active {
@@ -203,7 +268,7 @@ body {
 .mobile-menu-link {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 .mobile-menu.active .mobile-menu-link {
@@ -277,9 +342,9 @@ body {
     border: 1px solid rgba(28, 27, 26, 0.15);
     border-radius: 999px;
     background: transparent;
-    color: rgba(28, 27, 26, 0.5);
+    color: rgba(28, 27, 26, 0.65);
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .menu-tab:hover {
@@ -339,6 +404,46 @@ body {
 }
 
 /* ========================================
+   Menu Quick-View Modal
+   ======================================== */
+.menu-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(28, 27, 26, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-modal-card {
+    background: #EAE8E3;
+    color: #1C1B1A;
+    border-radius: 1rem;
+    overflow: hidden;
+    max-width: 28rem;
+    width: 100%;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    transform: translateY(16px) scale(0.97);
+    transition: transform 0.3s ease;
+}
+
+.menu-modal.active .menu-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+/* ========================================
    Testimonials
    ======================================== */
 .testimonial-card {
@@ -348,13 +453,13 @@ body {
     border: 1px solid rgba(212, 165, 116, 0.15);
     border-radius: 16px;
     padding: 2rem;
-    transition: all 0.4s ease;
+    transition: box-shadow 0.4s ease, border-color 0.4s ease, translate 0.4s ease;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-6px);
+    translate: 0 -6px;
     box-shadow: 0 20px 40px rgba(140, 106, 93, 0.1);
-    border-color: rgba(212, 165, 116, 0.3);
+    border-color: rgba(212, 165, 116, 0.35);
 }
 
 .testimonial-avatar {
@@ -392,11 +497,11 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(212, 165, 116, 0.1);
+    background: rgba(212, 165, 116, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #D4A574;
+    color: #8C6A5D;
     flex-shrink: 0;
 }
 
@@ -412,16 +517,16 @@ body {
     border-radius: 50%;
     background: #1C1B1A;
     color: #EAE8E3;
-    border: none;
+    border: 1px solid rgba(234, 232, 227, 0.15);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
+    z-index: 50;
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -433,6 +538,7 @@ body {
 
 .back-to-top:hover {
     background: #D4A574;
+    color: #1C1B1A;
     transform: translateY(-4px);
     box-shadow: 0 8px 30px rgba(212, 165, 116, 0.3);
 }
@@ -448,8 +554,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.5);
-    transition: all 0.4s ease;
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .social-icon:hover {
@@ -463,7 +569,7 @@ body {
     display: flex;
     border-radius: 999px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     transition: border-color 0.3s ease;
 }
 
@@ -473,17 +579,18 @@ body {
 
 .newsletter-input {
     flex: 1;
+    min-width: 0;
     background: rgba(255, 255, 255, 0.05);
     border: none;
     padding: 0.75rem 1.25rem;
     color: #EAE8E3;
     font-family: 'Manrope', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     outline: none;
 }
 
 .newsletter-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .newsletter-btn {
@@ -494,7 +601,8 @@ body {
     font-size: 1.1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background 0.3s ease;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
 }
 
 .newsletter-btn:hover {
@@ -502,9 +610,10 @@ body {
 }
 
 /* ========================================
-   Body scroll lock for mobile menu
+   Body scroll lock for mobile menu & modal
    ======================================== */
-body.menu-open {
+body.menu-open,
+body.modal-open {
     overflow: hidden;
 }
 
@@ -513,4 +622,23 @@ body.menu-open {
    ======================================== */
 .counter {
     display: inline-block;
+}
+
+/* ========================================
+   Reduced Motion Support
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+
+    .animate-bounce {
+        animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
 }

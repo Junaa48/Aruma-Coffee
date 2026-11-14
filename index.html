@@ -11,7 +11,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Aruma Coffee | Sanctuary of Taste">
     <meta property="og:description" content="Bukan sekadar kopi, tapi sebuah ritual ketenangan di tengah hiruk pikuk kota. Nikmati kopi pilihan terbaik di Aruma Coffee, Makassar.">
-    <meta property="og:image" content="images/pexels-jayoke-851555.jpg">
+    <meta property="og:image" content="images/optimized/hero.webp">
     <meta property="og:type" content="website">
     <meta name="description" content="Aruma Coffee — Sanctuary of Taste. Kopi specialty hand-crafted dari biji Arabica pilihan di Makassar, Indonesia.">
 
@@ -30,6 +30,13 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <noscript>
+        <style>
+            #loader { display: none !important; }
+            .hero-anim { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 
     <script>
         tailwind.config = {
@@ -53,15 +60,15 @@
 <body class="font-sans antialiased">
 
     <!-- Custom Cursor Elements -->
-    <div class="cursor-dot hidden md:block"></div>
-    <div class="cursor-outline hidden md:block"></div>
+    <div class="cursor-dot hidden md:block" aria-hidden="true"></div>
+    <div class="cursor-outline hidden md:block" aria-hidden="true"></div>
 
     <!-- Preloader -->
-    <div id="loader">
+    <div id="loader" aria-hidden="true">
         <div class="text-center">
-            <h1 class="font-serif text-4xl md:text-6xl tracking-widest overflow-hidden">
+            <p class="font-serif text-4xl md:text-6xl tracking-widest overflow-hidden">
                 <span class="loader-text inline-block translate-y-full">Aruma Coffee</span>
-            </h1>
+            </p>
             <p class="font-sans text-sm mt-4 overflow-hidden text-aruma-gold">
                 <span class="loader-text inline-block translate-y-full">Sip the Moment.</span>
             </p>
@@ -69,7 +76,7 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center text-white drop-shadow-lg transition-all duration-500">
+    <nav id="navbar" class="fixed top-0 w-full z-[60] px-6 py-6 flex justify-between items-center text-white drop-shadow-lg">
         <a href="#" class="text-2xl font-serif font-bold tracking-widest hover-trigger">ARUMA <span>Coffee</span></a>
         
         <div class="hidden md:flex gap-8 text-xs font-semibold tracking-widest uppercase">
@@ -87,7 +94,7 @@
         </div>
 
         <!-- Hamburger Menu Button (Mobile) -->
-        <button id="hamburger" class="md:hidden hamburger z-[60] relative" aria-label="Toggle Menu">
+        <button id="hamburger" class="md:hidden hamburger relative" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
@@ -95,63 +102,64 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="mobile-menu">
-        <div class="flex flex-col items-center justify-center h-full gap-8">
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <div class="flex flex-col items-center justify-center h-full gap-7 px-6">
             <a href="#story" class="mobile-menu-link text-3xl font-serif tracking-widest text-white/90 hover:text-aruma-gold transition-colors">Cerita</a>
             <a href="#menu" class="mobile-menu-link text-3xl font-serif tracking-widest text-white/90 hover:text-aruma-gold transition-colors">Menu</a>
             <a href="#gallery" class="mobile-menu-link text-3xl font-serif tracking-widest text-white/90 hover:text-aruma-gold transition-colors">Galeri</a>
             <a href="#testimonials" class="mobile-menu-link text-3xl font-serif tracking-widest text-white/90 hover:text-aruma-gold transition-colors">Testimoni</a>
             <a href="#location" class="mobile-menu-link text-3xl font-serif tracking-widest text-white/90 hover:text-aruma-gold transition-colors">Lokasi</a>
-            <div class="mt-8">
-                <a href="#menu" class="mobile-menu-link text-sm font-semibold border border-aruma-gold text-aruma-gold px-8 py-3 rounded-full hover:bg-aruma-gold hover:text-aruma-dark transition-all duration-500">
-                    Pesan Sekarang
-                </a>
-            </div>
+            <a href="#menu" class="mobile-menu-link mt-6 text-sm font-semibold border border-aruma-gold text-aruma-gold px-8 py-3 rounded-full hover:bg-aruma-gold hover:text-aruma-dark transition-all duration-500">
+                Pesan Sekarang
+            </a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <header class="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden">
+    <header class="relative w-full min-h-screen flex flex-col justify-between px-6 md:px-10 pt-28 pb-8 md:pb-10 overflow-hidden">
         <!-- Background Parallax Image -->
-        <div class="absolute inset-0 z-[-1] img-reveal-container">
-            <img src="images/pexels-jayoke-851555.jpg" class="w-full h-full object-cover img-reveal opacity-90 parallax-bg" alt="Aruma Ambience">
-            <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <img src="images/optimized/hero.webp" class="parallax-img parallax-bg opacity-95" alt="Suasana kopi hangat di Aruma Coffee" fetchpriority="high" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/15"></div>
             <div class="hero-image-overlay absolute inset-0"></div>
-            
         </div>
+
+        <div class="h-4" aria-hidden="true"></div>
         
-        <div class="max-w-7xl w-full text-center z-10 mt-20">
-            <p class="hero-anim text-aruma-gold font-serif italic text-lg mb-4 opacity-0">Welcome to your sanctuary</p>
-            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-aruma-dark mb-8 mix-blend-overlay">
-                <div class="overflow-hidden"><span class="hero-anim block translate-y-full">Discover</span></div>
-                <div class="overflow-hidden"><span class="hero-anim block translate-y-full italic">Inner</span></div>
-                <div class="overflow-hidden"><span class="hero-anim block translate-y-full">Peace</span></div>
+        <div class="max-w-7xl w-full mx-auto text-center relative z-10 my-auto py-8">
+            <p class="hero-anim text-aruma-gold font-serif italic text-base md:text-lg mb-4 opacity-0 drop-shadow">Welcome to your sanctuary</p>
+            <h1 class="font-serif text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-[0.95] text-[#FAF8F5] mb-6 drop-shadow-[0_6px_28px_rgba(0,0,0,0.45)]">
+                <span class="block overflow-hidden"><span class="hero-anim block translate-y-full">Discover</span></span>
+                <span class="block overflow-hidden"><span class="hero-anim block translate-y-full italic text-aruma-gold">Inner</span></span>
+                <span class="block overflow-hidden"><span class="hero-anim block translate-y-full">Peace</span></span>
             </h1>
         </div>
 
-        <div class="absolute bottom-10 left-6 md:left-10 text-aruma-dark max-w-xs text-xs md:text-sm font-medium leading-relaxed hero-anim opacity-0">
-            <p>Bukan sekadar kopi, tapi sebuah ritual ketenangan di tengah hiruk pikuk kota.</p>
-        </div>
-        
-        <div class="absolute bottom-10 right-6 md:right-10 animate-bounce hero-anim opacity-0">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1C1B1A" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        <div class="w-full flex items-end justify-between gap-6 relative z-10 pt-4">
+            <div class="text-aruma-dark max-w-[260px] sm:max-w-xs text-xs md:text-sm font-medium leading-relaxed hero-anim opacity-0">
+                <p>Bukan sekadar kopi, tapi sebuah ritual ketenangan di tengah hiruk pikuk kota.</p>
+            </div>
+            
+            <a href="#story" aria-label="Gulir ke bagian Cerita Kami" class="shrink-0 animate-bounce hero-anim opacity-0 text-aruma-dark hover:text-aruma-brown transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </a>
         </div>
     </header>
 
     <!-- Story / Philosophy Section -->
     <section id="story" class="py-24 md:py-32 px-6 bg-aruma-bg relative">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1 img-reveal-container aspect-[3/4] md:aspect-[4/5]">
-                <img src="images/pexels-elizabeth-zernetska-86424040-9001200.jpg" alt="Barista Craft" class="w-full h-full object-cover reveal-on-scroll grayscale hover:grayscale-0 transition-all duration-1000 rounded-sm">
+            <div class="order-2 md:order-1 img-reveal-container aspect-[3/4] md:aspect-[4/5] rounded-sm">
+                <img src="images/optimized/barista-craft.webp" alt="Barista Craft di Aruma Coffee" loading="lazy" decoding="async" class="w-full h-full object-cover reveal-on-scroll grayscale hover:grayscale-0 transition-[filter] duration-1000 rounded-sm">
             </div>
             <div class="order-1 md:order-2">
                 <h2 class="font-serif text-4xl md:text-5xl mb-8 text-aruma-dark leading-tight reveal-text">
                     Filosofi <span class="italic text-aruma-brown">Ketulusan</span> dalam Setiap Seduhan.
                 </h2>
-                <p class="text-aruma-dark/70 leading-loose mb-8 text-justify reveal-text delay-100">
+                <p class="text-aruma-dark/70 leading-loose mb-8 text-justify reveal-text">
                     Aruma Coffee lahir dari keinginan sederhana: menciptakan ruang di mana waktu berjalan sedikit lebih lambat. Kami percaya bahwa biji kopi terbaik berhak mendapatkan perlakuan terbaik—dipetik dengan hati, disangrai dengan presisi, dan disajikan dengan kehangatan.
                 </p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 reveal-text delay-200">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 reveal-text">
                     <div>
                         <h3 class="font-serif text-3xl text-aruma-dark"><span class="counter" data-target="100">0</span>%</h3>
                         <p class="text-xs uppercase tracking-widest text-aruma-brown mt-2">Arabica Beans</p>
@@ -207,165 +215,243 @@
         </div>
     </section>
 
-    <!-- Menu Section (Interactive List with Tabs) -->
-    <section id="menu" class="py-24 bg-[#E5E2DD] px-6 relative cursor-none-area">
+    <!-- Menu Section (Interactive List with Tabs & Quick-View) -->
+    <section id="menu" class="py-24 bg-[#E5E2DD] px-6 relative">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-12">
                 <span class="text-xs uppercase tracking-[0.3em] text-aruma-brown">Koleksi Kami</span>
                 <h2 class="font-serif text-4xl md:text-6xl mt-4 text-aruma-dark">Signature Menu</h2>
+                <p class="text-xs text-aruma-dark/55 mt-3">Klik menu untuk melihat detail atau memesan langsung</p>
             </div>
 
             <!-- Menu Tabs -->
-            <div class="menu-tabs flex justify-center gap-4 md:gap-8 mb-16">
-                <button class="menu-tab active" data-category="coffee">Coffee</button>
-                <button class="menu-tab" data-category="non-coffee">Non-Coffee</button>
-                <button class="menu-tab" data-category="pastry">Pastry</button>
+            <div class="menu-tabs flex flex-wrap justify-center gap-3 md:gap-8 mb-14" role="tablist" aria-label="Kategori Menu">
+                <button id="tab-coffee" class="menu-tab active" data-category="coffee" role="tab" aria-selected="true" aria-controls="panel-coffee">Coffee</button>
+                <button id="tab-non-coffee" class="menu-tab" data-category="non-coffee" role="tab" aria-selected="false" aria-controls="panel-non-coffee">Non-Coffee</button>
+                <button id="tab-pastry" class="menu-tab" data-category="pastry" role="tab" aria-selected="false" aria-controls="panel-pastry">Pastry</button>
             </div>
 
             <!-- Coffee Category -->
-            <div class="menu-category active" data-category="coffee">
+            <div id="panel-coffee" class="menu-category active" data-category="coffee" role="tabpanel" aria-labelledby="tab-coffee">
                 <div class="space-y-0 border-t border-aruma-dark/10">
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/cappucino.jpg">
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Cappuccino" data-desc="Espresso, Steamed Milk, Thick Foam" data-price="28K" data-img="images/optimized/cappucino.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cappuccino</h3>
-                            <span class="badge-bestseller">Best Seller</span>
+                            <img src="images/optimized/cappucino.webp" alt="Cappuccino" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cappuccino</h3>
+                                    <span class="badge-bestseller">Best Seller</span>
+                                </div>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Espresso, Steamed Milk, Thick Foam</p>
+                            </div>
                         </div>
-                        <div class="z-10 pointer-events-none flex items-center gap-4">
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Espresso, Steamed Milk, Thick Foam</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">28K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">28K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/Espresso.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Classic Espresso</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Classic Espresso" data-desc="Single Shot, Rich Crema, Bold" data-price="22K" data-img="images/optimized/espresso.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/espresso.webp" alt="Classic Espresso" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Classic Espresso</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Single Shot, Rich Crema, Bold</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Single Shot, Rich Crema, Bold</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">22K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">22K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/americano.png">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Americano</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Americano" data-desc="Espresso, Hot Water, Smooth Finish" data-price="24K" data-img="images/optimized/americano.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/americano.webp" alt="Americano" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Americano</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Espresso, Hot Water, Smooth Finish</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Espresso, Hot Water, Smooth Finish</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">24K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">24K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/latte-art.jpg">
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Café Latte" data-desc="Espresso, Steamed Milk, Thin Foam" data-price="30K" data-img="images/optimized/latte-art.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Café Latte</h3>
+                            <img src="images/optimized/latte-art.webp" alt="Café Latte" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Café Latte</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Espresso, Steamed Milk, Thin Foam</p>
+                            </div>
                         </div>
-                        <div class="z-10 pointer-events-none flex items-center gap-4">
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Espresso, Steamed Milk, Thin Foam</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">30K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">30K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/cappucino.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Mocha</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Mocha" data-desc="Espresso, Chocolate, Steamed Milk" data-price="32K" data-img="images/optimized/mocha.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/mocha.webp" alt="Mocha" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Mocha</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Espresso, Chocolate, Steamed Milk</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Espresso, Chocolate, Steamed Milk</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">32K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">32K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/Espresso.jpg">
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Cold Brew" data-desc="Slow Steeped, Smooth, Refreshing" data-price="28K" data-img="images/optimized/cold-brew.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cold Brew</h3>
-                            <span class="badge-new">New</span>
+                            <img src="images/optimized/cold-brew.webp" alt="Cold Brew" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cold Brew</h3>
+                                    <span class="badge-new">New</span>
+                                </div>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Slow Steeped, Smooth, Refreshing</p>
+                            </div>
                         </div>
-                        <div class="z-10 pointer-events-none flex items-center gap-4">
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Slow Steeped, Smooth, Refreshing</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">28K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">28K</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Non-Coffee Category -->
-            <div class="menu-category" data-category="non-coffee">
+            <div id="panel-non-coffee" class="menu-category" data-category="non-coffee" role="tabpanel" aria-labelledby="tab-non-coffee" hidden>
                 <div class="space-y-0 border-t border-aruma-dark/10">
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/latte-art.jpg">
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Matcha Latte" data-desc="Premium Grade Matcha, Oat Milk" data-price="30K" data-img="images/optimized/matcha-latte.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Matcha Latte</h3>
-                            <span class="badge-bestseller">Best Seller</span>
+                            <img src="images/optimized/matcha-latte.webp" alt="Matcha Latte" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Matcha Latte</h3>
+                                    <span class="badge-bestseller">Best Seller</span>
+                                </div>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Premium Grade Matcha, Oat Milk</p>
+                            </div>
                         </div>
-                        <div class="z-10 pointer-events-none flex items-center gap-4">
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Premium Grade Matcha, Oat Milk</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">30K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">30K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/cappucino.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Hot Chocolate</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Hot Chocolate" data-desc="Belgian Chocolate, Steamed Milk" data-price="28K" data-img="images/optimized/hot-chocolate.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/hot-chocolate.webp" alt="Hot Chocolate" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Hot Chocolate</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Belgian Chocolate, Steamed Milk</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Belgian Chocolate, Steamed Milk</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">28K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">28K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/latte-art.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Taro Latte</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Taro Latte" data-desc="Real Taro, Creamy, Sweet" data-price="28K" data-img="images/optimized/taro-latte.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/taro-latte.webp" alt="Taro Latte" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Taro Latte</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Real Taro, Creamy, Sweet</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Real Taro, Creamy, Sweet</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">28K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">28K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/americano.png">
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Fresh Orange" data-desc="Freshly Squeezed, No Sugar Added" data-price="25K" data-img="images/optimized/fresh-orange.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Fresh Orange</h3>
-                            <span class="badge-new">New</span>
+                            <img src="images/optimized/fresh-orange.webp" alt="Fresh Orange" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Fresh Orange</h3>
+                                    <span class="badge-new">New</span>
+                                </div>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Freshly Squeezed, No Sugar Added</p>
+                            </div>
                         </div>
-                        <div class="z-10 pointer-events-none flex items-center gap-4">
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Freshly Squeezed, No Sugar Added</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">25K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">25K</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Pastry Category -->
-            <div class="menu-category" data-category="pastry">
+            <div id="panel-pastry" class="menu-category" data-category="pastry" role="tabpanel" aria-labelledby="tab-pastry" hidden>
                 <div class="space-y-0 border-t border-aruma-dark/10">
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/kehangatan.jpg">
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Butter Croissant" data-desc="Flaky, Buttery, Freshly Baked" data-price="22K" data-img="images/optimized/butter-croissant.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Butter Croissant</h3>
-                            <span class="badge-bestseller">Best Seller</span>
+                            <img src="images/optimized/butter-croissant.webp" alt="Butter Croissant" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Butter Croissant</h3>
+                                    <span class="badge-bestseller">Best Seller</span>
+                                </div>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Flaky, Buttery, Freshly Baked</p>
+                            </div>
                         </div>
-                        <div class="z-10 pointer-events-none flex items-center gap-4">
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Flaky, Buttery, Freshly Baked</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">22K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">22K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/kehangatan.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Banana Bread</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Banana Bread" data-desc="Moist, Warm, Walnut Crunch" data-price="20K" data-img="images/optimized/banana-bread.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/banana-bread.webp" alt="Banana Bread" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Banana Bread</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Moist, Warm, Walnut Crunch</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Moist, Warm, Walnut Crunch</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">20K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">20K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/kehangatan.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cinnamon Roll</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Cinnamon Roll" data-desc="Warm, Glazed, Aromatic" data-price="24K" data-img="images/optimized/cinnamon-roll.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/cinnamon-roll.webp" alt="Cinnamon Roll" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cinnamon Roll</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Warm, Glazed, Aromatic</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Warm, Glazed, Aromatic</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">24K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">24K</span>
                         </div>
                     </div>
-                    <div class="menu-item group relative py-8 flex justify-between items-center cursor-pointer" data-img="images/kehangatan.jpg">
-                        <div class="z-10 pointer-events-none">
-                            <h3 class="font-serif text-3xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cookies & Cream Cake</h3>
-                        </div>
+
+                    <div class="menu-item group relative py-6 md:py-8 flex justify-between items-center gap-4 cursor-pointer" role="button" tabindex="0" data-title="Cookies & Cream Cake" data-desc="Rich Cream, Oreo Crumble" data-price="28K" data-img="images/optimized/cookies-cream-cake.webp">
                         <div class="z-10 pointer-events-none flex items-center gap-4">
+                            <img src="images/optimized/cookies-cream-cake.webp" alt="Cookies & Cream Cake" loading="lazy" decoding="async" class="w-14 h-14 rounded-lg object-cover shrink-0 md:hidden">
+                            <div>
+                                <h3 class="font-serif text-2xl md:text-4xl text-aruma-dark group-hover:italic transition-all">Cookies &amp; Cream Cake</h3>
+                                <p class="text-xs text-aruma-brown mt-1 md:hidden">Rich Cream, Oreo Crumble</p>
+                            </div>
+                        </div>
+                        <div class="z-10 pointer-events-none flex items-center gap-4 shrink-0">
                             <p class="text-xs text-aruma-brown opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">Rich Cream, Oreo Crumble</p>
-                            <span class="font-sans text-lg text-aruma-dark/60 group-hover:text-aruma-dark">28K</span>
+                            <span class="font-sans text-lg text-aruma-dark/70 group-hover:text-aruma-dark font-medium">28K</span>
                         </div>
                     </div>
                 </div>
@@ -373,42 +459,77 @@
 
         </div>
         
-        <!-- Image container for hover effect -->
-        <img id="menu-floating-img" class="menu-floating-img" src="" alt="Menu Preview">
+        <!-- Image container for desktop hover effect -->
+        <img id="menu-floating-img" class="menu-floating-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Menu Preview" aria-hidden="true">
     </section>
 
     <!-- Gallery / Vibe Section -->
-    <section id="gallery" class="py-32 bg-aruma-dark text-[#EAE8E3] overflow-hidden">
-        <div class="mb-16 px-6 text-center">
-             <h2 class="font-serif text-3xl md:text-4xl italic text-aruma-gold mb-4">"The Atmosphere"</h2>
-             <p class="text-sm text-aruma-gold/60 uppercase tracking-widest">Geser untuk melihat lebih banyak</p>
+    <section id="gallery" class="py-28 md:py-32 bg-aruma-dark text-[#EAE8E3] overflow-hidden">
+        <div class="max-w-7xl mx-auto mb-12 px-6 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+            <div class="text-center sm:text-left">
+                <h2 class="font-serif text-3xl md:text-4xl italic text-aruma-gold mb-3">"The Atmosphere"</h2>
+                <p class="text-xs md:text-sm text-aruma-gold/65 uppercase tracking-widest">Geser atau tarik untuk menjelajah</p>
+            </div>
+
+            <!-- Gallery Navigation Controls -->
+            <div class="flex items-center justify-center sm:justify-end gap-3">
+                <button id="gallery-prev" type="button" class="gallery-nav-btn" aria-label="Galeri sebelumnya">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button id="gallery-next" type="button" class="gallery-nav-btn" aria-label="Galeri berikutnya">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
         </div>
 
         <!-- Horizontal Scroll Container -->
-        <div class="gallery-scroll flex gap-8 overflow-x-auto px-6 pb-12 snap-x snap-mandatory">
-            <div class="gallery-item min-w-[80vw] md:min-w-[40vw] aspect-[4/3] snap-center bg-gray-800 relative overflow-hidden group rounded-lg">
-                <img src="images/kehangatan.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" alt="Warmth">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
+        <div class="gallery-scroll flex gap-6 md:gap-8 overflow-x-auto px-6 md:px-12 pb-8">
+            <div class="gallery-item shrink-0 w-[82vw] sm:w-[60vw] md:w-[42vw] lg:w-[34vw] aspect-[4/3] bg-gray-800 relative overflow-hidden group rounded-lg">
+                <img src="images/optimized/kehangatan.webp" loading="lazy" decoding="async" draggable="false" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Interior kafe yang hangat dan nyaman">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-6 left-6 right-6 pointer-events-none">
                     <span class="text-xs uppercase tracking-widest border-b border-aruma-gold pb-1 inline-block">Interior</span>
-                    <p class="text-xs mt-2 text-white/70">Ruang yang hangat dan nyaman</p>
+                    <p class="text-xs mt-2 text-white/75">Ruang yang hangat dan nyaman</p>
                 </div>
             </div>
-            <div class="gallery-item min-w-[80vw] md:min-w-[40vw] aspect-[4/3] snap-center bg-gray-800 relative overflow-hidden group rounded-lg">
-                <img src="images/premium-beans.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" alt="Beans">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
+            <div class="gallery-item shrink-0 w-[82vw] sm:w-[60vw] md:w-[42vw] lg:w-[34vw] aspect-[4/3] bg-gray-800 relative overflow-hidden group rounded-lg">
+                <img src="images/optimized/premium-beans.webp" loading="lazy" decoding="async" draggable="false" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Biji kopi pilihan terbaik">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-6 left-6 right-6 pointer-events-none">
                     <span class="text-xs uppercase tracking-widest border-b border-aruma-gold pb-1 inline-block">Process</span>
-                    <p class="text-xs mt-2 text-white/70">Biji kopi pilihan terbaik</p>
+                    <p class="text-xs mt-2 text-white/75">Biji kopi pilihan terbaik</p>
                 </div>
             </div>
-             <div class="gallery-item min-w-[80vw] md:min-w-[40vw] aspect-[4/3] snap-center bg-gray-800 relative overflow-hidden group rounded-lg">
-                <img src="images/latte-art.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" alt="Art">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
+            <div class="gallery-item shrink-0 w-[82vw] sm:w-[60vw] md:w-[42vw] lg:w-[34vw] aspect-[4/3] bg-gray-800 relative overflow-hidden group rounded-lg">
+                <img src="images/optimized/latte-art.webp" loading="lazy" decoding="async" draggable="false" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Seni latte art dalam setiap cangkir">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-6 left-6 right-6 pointer-events-none">
                     <span class="text-xs uppercase tracking-widest border-b border-aruma-gold pb-1 inline-block">Artistry</span>
-                    <p class="text-xs mt-2 text-white/70">Seni dalam setiap cangkir</p>
+                    <p class="text-xs mt-2 text-white/75">Seni dalam setiap cangkir</p>
                 </div>
+            </div>
+            <div class="gallery-item shrink-0 w-[82vw] sm:w-[60vw] md:w-[42vw] lg:w-[34vw] aspect-[4/3] bg-gray-800 relative overflow-hidden group rounded-lg">
+                <img src="images/optimized/barista-craft.webp" loading="lazy" decoding="async" draggable="false" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Ketelitian barista dalam meracik kopi">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-6 left-6 right-6 pointer-events-none">
+                    <span class="text-xs uppercase tracking-widest border-b border-aruma-gold pb-1 inline-block">Craftsmanship</span>
+                    <p class="text-xs mt-2 text-white/75">Presisi di setiap seduhan manual</p>
+                </div>
+            </div>
+            <div class="gallery-item shrink-0 w-[82vw] sm:w-[60vw] md:w-[42vw] lg:w-[34vw] aspect-[4/3] bg-gray-800 relative overflow-hidden group rounded-lg">
+                <img src="images/optimized/hero.webp" loading="lazy" decoding="async" draggable="false" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" alt="Secangkir kopi pagi di meja kayu Aruma">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent pointer-events-none"></div>
+                <div class="absolute bottom-6 left-6 right-6 pointer-events-none">
+                    <span class="text-xs uppercase tracking-widest border-b border-aruma-gold pb-1 inline-block">Sanctuary</span>
+                    <p class="text-xs mt-2 text-white/75">Momen tenang di tengah kota</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle Scroll Progress Track -->
+        <div class="max-w-7xl mx-auto px-6 mt-2">
+            <div class="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
+                <div id="gallery-progress" class="h-full bg-aruma-gold rounded-full transition-[width] duration-150 ease-out" style="width: 25%;"></div>
             </div>
         </div>
     </section>
@@ -418,12 +539,12 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <span class="text-xs uppercase tracking-[0.3em] text-aruma-brown">Testimoni</span>
-                <h2 class="font-serif text-4xl md:text-5xl mt-4 text-aruma-dark">Apa Kata <span class="italic text-aruma-brown">Mereka</span></h2>
+                <h2 class="font-serif text-4xl md:text-5xl mt-4 text-aruma-dark reveal-text">Apa Kata <span class="italic text-aruma-brown">Mereka</span></h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card reveal-text">
+                <div class="testimonial-card">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="testimonial-avatar">RA</div>
                         <div>
@@ -432,13 +553,13 @@
                         </div>
                     </div>
                     <p class="text-aruma-dark/70 leading-relaxed italic">"Cappuccino di Aruma ini benar-benar lain dari yang lain. Foam-nya lembut, kopinya bold tapi tidak pahit. Tempatnya juga sangat nyaman untuk kerja."</p>
-                    <div class="flex gap-1 mt-4 text-aruma-gold">
+                    <div class="flex gap-1 mt-4 text-aruma-gold" aria-label="Rating 5 dari 5 bintang">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card reveal-text">
+                <div class="testimonial-card">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="testimonial-avatar">DF</div>
                         <div>
@@ -447,13 +568,13 @@
                         </div>
                     </div>
                     <p class="text-aruma-dark/70 leading-relaxed italic">"Sudah jadi tempat langganan saya hampir 2 tahun. Cold brew-nya refreshing, dan pastry mereka selalu fresh. Staff-nya juga ramah banget!"</p>
-                    <div class="flex gap-1 mt-4 text-aruma-gold">
+                    <div class="flex gap-1 mt-4 text-aruma-gold" aria-label="Rating 5 dari 5 bintang">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card reveal-text">
+                <div class="testimonial-card">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="testimonial-avatar">SA</div>
                         <div>
@@ -462,7 +583,7 @@
                         </div>
                     </div>
                     <p class="text-aruma-dark/70 leading-relaxed italic">"Aesthetic-nya on point, kopinya juara. Matcha latte mereka jadi favorit saya. Perfect place untuk foto dan ngopi santai bareng teman."</p>
-                    <div class="flex gap-1 mt-4 text-aruma-gold">
+                    <div class="flex gap-1 mt-4 text-aruma-gold" aria-label="Rating 5 dari 5 bintang">
                         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                     </div>
                 </div>
@@ -472,20 +593,20 @@
 
     <!-- CTA Section -->
     <section class="cta-section relative py-32 md:py-40 px-6 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="images/premium-beans.jpg" class="w-full h-full object-cover" alt="CTA Background">
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <img src="images/optimized/premium-beans.webp" loading="lazy" decoding="async" class="parallax-img cta-bg-img" alt="Biji kopi pilihan Aruma Coffee">
             <div class="absolute inset-0 bg-aruma-dark/80"></div>
         </div>
         <div class="relative z-10 max-w-3xl mx-auto text-center">
             <h2 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 reveal-text leading-tight">
                 Siap Merasakan <br><span class="italic text-aruma-gold">Pengalaman Aruma?</span>
             </h2>
-            <p class="text-white/60 mb-10 text-lg reveal-text">Kunjungi kami dan rasakan sendiri keajaiban dalam setiap tegukan.</p>
+            <p class="text-white/70 mb-10 text-lg reveal-text">Kunjungi kami dan rasakan sendiri keajaiban dalam setiap tegukan.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-text">
                 <a href="#location" class="inline-block text-sm font-semibold bg-aruma-gold text-aruma-dark px-10 py-4 rounded-full hover:bg-white transition-all duration-500 tracking-wider uppercase">
                     Kunjungi Kami
                 </a>
-                <a href="https://wa.me/62812345678" target="_blank" class="inline-block text-sm font-semibold border border-white text-white px-10 py-4 rounded-full hover:bg-white hover:text-aruma-dark transition-all duration-500 tracking-wider uppercase">
+                <a href="https://wa.me/628123456789?text=Halo%20Aruma%20Coffee%2C%20saya%20ingin%20bertanya%20tentang%20menu." target="_blank" rel="noopener noreferrer" class="inline-block text-sm font-semibold border border-white text-white px-10 py-4 rounded-full hover:bg-white hover:text-aruma-dark transition-all duration-500 tracking-wider uppercase">
                     WhatsApp Kami
                 </a>
             </div>
@@ -504,6 +625,7 @@
                 <!-- Map -->
                 <div class="rounded-2xl overflow-hidden shadow-2xl reveal-text aspect-[4/3]">
                     <iframe 
+                        title="Peta Lokasi Aruma Coffee di Makassar"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127197.16770787958!2d119.3473!3d-5.1477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee329d96c4671%3A0x3030bfbcaf770b0!2sMakassar!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
                         width="100%" 
                         height="100%" 
@@ -523,7 +645,7 @@
                             </div>
                             <div>
                                 <h4 class="font-serif text-xl text-aruma-dark mb-1">Alamat</h4>
-                                <p class="text-aruma-dark/60">Cluster Akasia<br>Makassar, Sulawesi Selatan<br>Indonesia 90234</p>
+                                <p class="text-aruma-dark/65">Cluster Akasia<br>Makassar, Sulawesi Selatan<br>Indonesia 90234</p>
                             </div>
                         </div>
 
@@ -533,7 +655,7 @@
                             </div>
                             <div>
                                 <h4 class="font-serif text-xl text-aruma-dark mb-1">Jam Operasional</h4>
-                                <div class="text-aruma-dark/60 space-y-1">
+                                <div class="text-aruma-dark/65 space-y-1">
                                     <p>Senin – Jumat: <span class="text-aruma-dark font-medium">08:00 – 22:00</span></p>
                                     <p>Sabtu – Minggu: <span class="text-aruma-dark font-medium">09:00 – 23:00</span></p>
                                 </div>
@@ -546,12 +668,12 @@
                             </div>
                             <div>
                                 <h4 class="font-serif text-xl text-aruma-dark mb-1">Kontak</h4>
-                                <p class="text-aruma-dark/60">+62 812-3456-789</p>
-                                <p class="text-aruma-dark/60">arumacoffee@gmail.com</p>
+                                <p><a href="tel:+628123456789" class="text-aruma-dark/65 hover:text-aruma-brown transition-colors">+62 812-3456-789</a></p>
+                                <p><a href="mailto:arumacoffee@gmail.com" class="text-aruma-dark/65 hover:text-aruma-brown transition-colors">arumacoffee@gmail.com</a></p>
                             </div>
                         </div>
 
-                        <a href="https://maps.google.com" target="_blank" class="inline-block mt-4 text-sm font-semibold bg-aruma-dark text-aruma-bg px-8 py-3 rounded-full hover:bg-aruma-brown transition-all duration-500 tracking-wider uppercase">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Cluster+Akasia+Makassar+Sulawesi+Selatan" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-sm font-semibold bg-aruma-dark text-aruma-bg px-8 py-3 rounded-full hover:bg-aruma-brown transition-all duration-500 tracking-wider uppercase">
                             Get Directions →
                         </a>
                     </div>
@@ -568,59 +690,83 @@
                 <!-- Brand -->
                 <div>
                     <h2 class="font-serif text-5xl md:text-6xl text-aruma-bg mb-6">Aruma.</h2>
-                    <p class="text-white/40 leading-relaxed max-w-xs">Bukan sekadar kopi, tapi sebuah ritual ketenangan di tengah hiruk pikuk kota.</p>
+                    <p class="text-white/50 leading-relaxed max-w-xs">Bukan sekadar kopi, tapi sebuah ritual ketenangan di tengah hiruk pikuk kota.</p>
                 </div>
                 
                 <!-- Quick Links -->
                 <div>
                     <h4 class="font-serif text-lg text-aruma-gold mb-6">Quick Links</h4>
                     <div class="flex flex-col gap-3">
-                        <a href="#story" class="text-white/50 hover:text-aruma-gold transition-colors text-sm">Cerita Kami</a>
-                        <a href="#menu" class="text-white/50 hover:text-aruma-gold transition-colors text-sm">Menu</a>
-                        <a href="#gallery" class="text-white/50 hover:text-aruma-gold transition-colors text-sm">Galeri</a>
-                        <a href="#testimonials" class="text-white/50 hover:text-aruma-gold transition-colors text-sm">Testimoni</a>
-                        <a href="#location" class="text-white/50 hover:text-aruma-gold transition-colors text-sm">Lokasi</a>
+                        <a href="#story" class="text-white/60 hover:text-aruma-gold transition-colors text-sm">Cerita Kami</a>
+                        <a href="#menu" class="text-white/60 hover:text-aruma-gold transition-colors text-sm">Menu</a>
+                        <a href="#gallery" class="text-white/60 hover:text-aruma-gold transition-colors text-sm">Galeri</a>
+                        <a href="#testimonials" class="text-white/60 hover:text-aruma-gold transition-colors text-sm">Testimoni</a>
+                        <a href="#location" class="text-white/60 hover:text-aruma-gold transition-colors text-sm">Lokasi</a>
                     </div>
                 </div>
 
                 <!-- Social & Newsletter -->
                 <div>
                     <h4 class="font-serif text-lg text-aruma-gold mb-6">Stay Connected</h4>
-                    <div class="flex gap-4 mb-8">
+                    <div class="flex gap-4 mb-3">
                         <!-- Instagram -->
-                        <a href="#" class="social-icon" aria-label="Instagram">
+                        <a href="#contact" data-coming-soon="Instagram" class="social-icon" aria-label="Instagram Aruma Coffee">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                         </a>
                         <!-- WhatsApp -->
-                        <a href="#" class="social-icon" aria-label="WhatsApp">
+                        <a href="https://wa.me/628123456789" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp Aruma Coffee">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                         </a>
                         <!-- Email -->
-                        <a href="mailto:arumacoffee@gmail.com" class="social-icon" aria-label="Email">
+                        <a href="mailto:arumacoffee@gmail.com" class="social-icon" aria-label="Email Aruma Coffee">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </a>
                         <!-- TikTok -->
-                        <a href="#" class="social-icon" aria-label="TikTok">
+                        <a href="#contact" data-coming-soon="TikTok" class="social-icon" aria-label="TikTok Aruma Coffee">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
                         </a>
                     </div>
+                    <p id="social-feedback" class="text-xs text-aruma-gold/80 min-h-[1rem] mb-5" aria-live="polite"></p>
 
                     <!-- Newsletter -->
-                    <p class="text-white/40 text-sm mb-3">Dapatkan update & promo eksklusif:</p>
-                    <form class="newsletter-form flex" onsubmit="event.preventDefault();">
-                        <input type="email" placeholder="Email kamu..." class="newsletter-input">
-                        <button type="submit" class="newsletter-btn">→</button>
+                    <p class="text-white/50 text-sm mb-3">Dapatkan update &amp; promo eksklusif:</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input id="newsletter-email" type="email" required aria-label="Alamat email untuk newsletter" placeholder="Email kamu..." class="newsletter-input">
+                        <button type="submit" aria-label="Daftar newsletter" class="newsletter-btn">→</button>
                     </form>
+                    <p id="newsletter-feedback" class="text-xs mt-2 min-h-[1rem]" aria-live="polite"></p>
                 </div>
             </div>
 
             <!-- Footer Bottom -->
             <div class="flex flex-col md:flex-row justify-between items-center mt-10 gap-4">
-                <p class="text-xs text-white/20 uppercase tracking-widest">&copy; 2024 Aruma Coffee. All Rights Reserved.</p>
-                <p class="text-xs text-white/20">Designed with ♥ in Makassar</p>
+                <p class="text-xs text-white/35 uppercase tracking-widest">&copy; <span id="copyright-year">2026</span> Aruma Coffee. All Rights Reserved.</p>
+                <p class="text-xs text-white/35">Designed with ♥ in Makassar</p>
             </div>
         </div>
     </footer>
+
+    <!-- Menu Quick-View & Order Modal -->
+    <div id="menu-modal" class="menu-modal" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title" aria-hidden="true">
+        <div class="menu-modal-card relative">
+            <button id="menu-modal-close" type="button" aria-label="Tutup detail menu" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-aruma-dark/80 text-white flex items-center justify-center hover:bg-aruma-dark transition-colors">
+                ✕
+            </button>
+            <div class="aspect-[4/3] w-full overflow-hidden bg-aruma-dark/10">
+                <img id="menu-modal-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Menu Preview" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+                <div class="flex items-baseline justify-between gap-4 mb-2">
+                    <h3 id="menu-modal-title" class="font-serif text-2xl text-aruma-dark"></h3>
+                    <span id="menu-modal-price" class="font-sans text-lg font-semibold text-aruma-brown shrink-0"></span>
+                </div>
+                <p id="menu-modal-desc" class="text-sm text-aruma-dark/70 mb-6"></p>
+                <a id="menu-modal-order" href="https://wa.me/628123456789" target="_blank" rel="noopener noreferrer" class="block w-full text-center text-xs font-semibold uppercase tracking-widest bg-aruma-dark text-aruma-bg py-3.5 rounded-full hover:bg-aruma-brown transition-colors">
+                    Pesan via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
